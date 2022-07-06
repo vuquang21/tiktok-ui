@@ -1,14 +1,14 @@
-import styles from './Header.module.scss';
+import styles from './HeaderOnly.module.scss';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-const Header = () => {
+const HeaderOnly = () => {
   return (
     <header className={cx('wrapper')}>
-      <div className={cx('inner')}>Header</div>
+      <div className={cx('inner')}>HeaderOnly</div>
     </header>
   );
 };
 
-export default Header;
+export default HeaderOnly;
