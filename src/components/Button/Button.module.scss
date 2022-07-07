@@ -24,6 +24,11 @@
 .icon + .title, .title + .icon { 
   margin: 0px 8px;
 }
+.icon { 
+  display: inline-block;
+  width: 20px;
+  text-align: center;
+}
 // Button type
 .rounded {
   border-radius: 99999px;

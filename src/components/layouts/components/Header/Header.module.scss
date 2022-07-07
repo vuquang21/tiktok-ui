@@ -111,3 +111,10 @@ input:not(:placeholder-shown) ~ .loading,
   font-size: 1.4rem;
   font-weight: 600;
 }
+
+.more-btn { 
+  font-size: 2rem;
+  cursor: pointer;
+  background: transparent;
+  padding: 0 6px;
+}

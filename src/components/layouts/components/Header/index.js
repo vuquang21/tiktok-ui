@@ -1,17 +1,22 @@
-import styles from './Header.module.scss';
-import classNames from 'classnames/bind';
-import images from '../../../../assets/images';
+import { faCircleQuestion, faCircleXmark, faEarthAmerica, faEllipsisVertical, faKeyboard, faMagnifyingGlass, faPlus, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react/headless';
+import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
-import { Wrapper as PopperWrapper } from '../../../Popper';
+import images from '../../../../assets/images';
 import AccountItem from '../../../AccountItem';
 import Button from '../../../Button';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { Wrapper as PopperWrapper } from '../../../Popper';
+import styles from './Header.module.scss';
+import Menu from '../../../Popper/Menu';
 
 const cx = classNames.bind(styles);
 
+const MENU_ITEMS = [
+  {icon: <FontAwesomeIcon icon={faEarthAmerica} />, title: 'English'},
+  {icon: <FontAwesomeIcon icon={faCircleQuestion} />, title: 'Feedback and help', to: '/feedback'},
+  {icon: <FontAwesomeIcon icon={faKeyboard} />, title: 'Keyboard shortcuts'},
+] 
 const Header = () => {
   const [searchResult, setSearchResult] = useState([]);
   useEffect(() => {
@@ -55,10 +60,17 @@ const Header = () => {
         </Tippy>
 
         <div className={cx('action')}>
-          <Button text  leftIcon={<FontAwesomeIcon icon={faPlus} />}>
+          <Button text leftIcon={<FontAwesomeIcon icon={faPlus} />}>
             Upload
           </Button>
           <Button primary>Log in</Button>
+
+          
+          <Menu items={MENU_ITEMS}>
+            <button className={cx('more-btn')}>
+              <FontAwesomeIcon icon={faEllipsisVertical} />
+            </button>
+          </Menu>
         </div>
       </div>
     </header>

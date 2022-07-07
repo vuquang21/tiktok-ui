@@ -1,0 +1,16 @@
+// More menu item
+.more-menu-item {
+  display: flex;
+  align-self: flex-start;
+  margin: 4px;
+}
+.item-btn {
+  width: 100%;
+  margin: 2px 0 !important;
+  justify-content: start;
+  font-weight: 600;
+  padding: 11px 16px;
+  &:hover {
+    background: rgba(22, 24, 35, 0.03);
+  }
+}
