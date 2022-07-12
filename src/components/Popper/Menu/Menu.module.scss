@@ -1,16 +1,40 @@
 // More menu item
 .more-menu-item {
-  display: flex;
+  width: 100%;
   align-self: flex-start;
   margin: 4px;
 }
 .item-btn {
   width: 100%;
   margin: 2px 0 !important;
-  justify-content: start;
+  justify-content: flex-start;
   font-weight: 600;
   padding: 11px 16px;
+  line-height: 1.8rem;
   &:hover {
     background: rgba(22, 24, 35, 0.03);
   }
+  &.separate {
+    border-top: 1px solid rgba(22, 24, 35, 0.12);
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 42px;
+  margin-top: -8px;
+  cursor: pointer;
+}
+
+.back-btn {
+  width: 30px;
+  height: 100%;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.header-title {
+  margin-right: 15px;
 }

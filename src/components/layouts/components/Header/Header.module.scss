@@ -15,6 +15,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 var(--default-layout-horizontal-space);
 }
 
 .logo {
@@ -101,8 +102,26 @@ input:not(:placeholder-shown) ~ .loading,
     background-color: rgba(22, 24, 35, 0.06);
   }
 }
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
 
-.action {
+.actions-btn {
+  background-color: transparent;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.user-avt {
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px;
+  cursor: pointer;
+  object-fit: cover;
+  margin-left: 32px;
 }
 
 .search-title {
@@ -112,7 +131,7 @@ input:not(:placeholder-shown) ~ .loading,
   font-weight: 600;
 }
 
-.more-btn { 
+.more-btn {
   font-size: 2rem;
   cursor: pointer;
   background: transparent;
