@@ -22,86 +22,6 @@
   cursor: pointer;
 }
 
-.search,
-.search-result {
-  width: 361px;
-}
-
-.search {
-  position: relative;
-  display: flex;
-  width: 361px;
-  height: var(--search-height);
-  background-color: rgb(22 24 35 / 0.06);
-  border-radius: var(--search-border-radius);
-  padding-left: 16px;
-  border: 1.5px solid transparent;
-  // input
-  input {
-    flex: 1;
-    color: var(--black);
-    font-size: 1.6rem;
-    border: none;
-    outline: none;
-    height: 100%;
-    background-color: transparent;
-    caret-color: var(--primary);
-  }
-  input:not(:placeholder-shown) ~ .search-btn {
-    color: rgba(22, 24, 35, 0.75);
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: var(--search-top-space);
-    right: 52px;
-    width: 1px;
-    height: calc(var(--search-height) - var(--search-top-space) * 2);
-    background-color: rgba(22, 24, 35, 0.12);
-  }
-  &:focus-within {
-    border-color: rgba(22, 24, 35, 0.2);
-  }
-}
-input:not(:placeholder-shown) ~ .loading,
-.clear {
-  display: block;
-  animation: circleLoading 1s;
-}
-@keyframes circleLoading {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.clear,
-.loading {
-  position: absolute;
-  right: calc(var(--search-button-width) + 16px);
-  top: 50%;
-  transform: translateY(-50%);
-  color: rgba(22, 24, 35, 0.34);
-  display: none;
-}
-
-.search-btn {
-  width: var(--search-button-width);
-  height: 100%;
-  outline: none;
-  border: none;
-  border-top-right-radius: var(--search-border-radius);
-  border-bottom-right-radius: var(--search-border-radius);
-  font-size: 2rem;
-  color: rgba(22, 24, 35, 0.34);
-  &:hover {
-    background-color: rgba(22, 24, 35, 0.03);
-    cursor: pointer;
-  }
-  &:active {
-    background-color: rgba(22, 24, 35, 0.06);
-  }
-}
 .actions {
   display: flex;
   align-items: center;
@@ -110,6 +30,7 @@ input:not(:placeholder-shown) ~ .loading,
 }
 
 .actions-btn {
+  display: flex;
   background-color: transparent;
   font-size: 2rem;
   cursor: pointer;
@@ -122,13 +43,6 @@ input:not(:placeholder-shown) ~ .loading,
   cursor: pointer;
   object-fit: cover;
   margin-left: 32px;
-}
-
-.search-title {
-  padding: 5px 12px;
-  color: rgb(22 24 35 / 0.5);
-  font-size: 1.4rem;
-  font-weight: 600;
 }
 
 .more-btn {

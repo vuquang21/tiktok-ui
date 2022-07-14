@@ -1,4 +1,5 @@
 .wrapper {
+  width: 100%;
   display: flex;
   align-items: center;
   padding: 9px 16px;
@@ -20,7 +21,7 @@
 }
 
 .name {
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   font-weight: 600;
   .check {
     margin-left: 6px;
@@ -29,6 +30,6 @@
 }
 
 .username {
-    font-size: 1.4rem;
-    color: rgba(22, 24, 35, 0.5);
+  font-size: 1.4rem;
+  color: rgba(22, 24, 35, 0.5);
 }
