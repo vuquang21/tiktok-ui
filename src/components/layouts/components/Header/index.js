@@ -6,7 +6,7 @@ import { useState } from 'react';
 import 'tippy.js/dist/tippy.css';
 import images from '../../../../assets/images';
 import Button from '../../../Button';
-import { InboxIcon, MessageIcon, UploadIcon } from '../../../icons';
+import { InboxIcon, MessageIcon, SupBage, UploadIcon } from '../../../icons';
 import Image from '../../../Images';
 import Menu from '../../../Popper/Menu';
 import Search from '../Search';
@@ -35,9 +35,9 @@ const USER_ITEMS = [
   { icon: <FontAwesomeIcon icon={faArrowRightFromBracket} />, title: 'Log out', to: '/', separate: true, },
 ]
 const Header = () => {
- 
+
   const [currentUser, setCurrentUser] = useState(true)
-  
+
 
   // handle logic 
   const handleMenuChange = () => {
@@ -68,8 +68,10 @@ const Header = () => {
               </Tippy>
               <Tippy delay={[0, 100]} content='Inbox' placement='bottom' >
                 <button className={cx('actions-btn')}>
-                  <InboxIcon />
+                  <InboxIcon className={cx('supbage')} />
+                  {/* <SupBage className={cx('supbage')} /> */}
                 </button>
+
               </Tippy>
             </>
           ) : (
