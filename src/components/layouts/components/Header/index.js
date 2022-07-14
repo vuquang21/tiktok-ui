@@ -1,4 +1,4 @@
-import { faArrowRightFromBracket, faCircleQuestion, faCircleXmark, faCloudUpload, faCoins, faEarthAmerica, faEllipsisVertical, faGear, faKeyboard, faMagnifyingGlass, faMessage, faPlus, faSpinner, faUserAlt } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRightFromBracket, faCircleQuestion, faCircleXmark, faCoins, faEarthAmerica, faEllipsisVertical, faGear, faKeyboard, faMagnifyingGlass, faPlus, faSpinner, faUserAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Tippy from '@tippyjs/react';
 import HeadlessTippy from '@tippyjs/react/headless';
@@ -8,9 +8,11 @@ import 'tippy.js/dist/tippy.css';
 import images from '../../../../assets/images';
 import AccountItem from '../../../AccountItem';
 import Button from '../../../Button';
+import { InboxIcon, MessageIcon, UploadIcon } from '../../../icons';
 import { Wrapper as PopperWrapper } from '../../../Popper';
 import Menu from '../../../Popper/Menu';
 import styles from './Header.module.scss';
+import Image from '../../../Images';
 
 const cx = classNames.bind(styles);
 
@@ -37,7 +39,6 @@ const USER_ITEMS = [
 const Header = () => {
   const [searchResult, setSearchResult] = useState([]);
   const [currentUser, setCurrentUser] = useState(true)
-  console.log(currentUser);
   useEffect(() => {
     setTimeout(() => {
       setSearchResult([]);
@@ -88,12 +89,17 @@ const Header = () => {
             <>
               <Tippy delay={[0, 100]} content='Upload video' placement='bottom' >
                 <button className={cx('actions-btn')}>
-                  <FontAwesomeIcon icon={faCloudUpload} />
+                  <UploadIcon />
                 </button>
               </Tippy>
               <Tippy delay={[0, 100]} content='Message' placement='bottom' >
                 <button className={cx('actions-btn')}>
-                  <FontAwesomeIcon icon={faMessage} />
+                  <MessageIcon />
+                </button>
+              </Tippy>
+              <Tippy delay={[0, 100]} content='Inbox' placement='bottom' >
+                <button className={cx('actions-btn')}>
+                  <InboxIcon />
                 </button>
               </Tippy>
             </>
@@ -108,7 +114,7 @@ const Header = () => {
 
           <Menu items={currentUser ? USER_ITEMS : MENU_ITEMS} onChange={handleMenuChange} >
             {currentUser === true ? (
-              <img
+              <Image
                 src={images.userAvt}
                 className={cx('user-avt')}
                 alt='Nguyen Van A' />
