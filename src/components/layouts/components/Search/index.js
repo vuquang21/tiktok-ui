@@ -4,46 +4,43 @@ import HeadlessTippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 import { useEffect, useRef, useState } from 'react';
 import 'tippy.js/dist/tippy.css';
+import { useDebounce } from '../../../../hooks';
 import AccountItem from '../../../AccountItem';
 import { SearchIcon } from '../../../icons';
 import { Wrapper as PopperWrapper } from '../../../Popper';
+import { search as searchService } from '../../../../apiService/searchService';
 import styles from './Search.module.scss';
-import { useDebounce } from '../../../../hooks';
 
 const cx = classNames.bind(styles);
 
 
 const Search = () => {
     const [searchResult, setSearchResult] = useState([]);
-    const [searchValue, setSearchValue] = useState('')
-    const [showResult, setShowResult] = useState(true)
-    const [loading, setLoading] = useState(false)
-    const inputRef = useRef()
-    const debounced = useDebounce(searchValue, 500)
+    const [searchValue, setSearchValue] = useState('');
+    const [showResult, setShowResult] = useState(true);
+    const [loading, setLoading] = useState(false);
+    const inputRef = useRef();
+    const debounced = useDebounce(searchValue, 500);
     const handleHiddenResult = () => {
-        setShowResult(false)
+        setShowResult(false);
     }
     useEffect(() => {
         if (!debounced.trim()) {
-            setSearchResult([])
-            return
+            setSearchResult([]);
+            return;
         }
-        setLoading(true)
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounced)}&type=less`)
-            .then(res => res.json())
-            .then(res => {
-                setSearchResult(res.data)
-            })
-            .catch(() => {
-                setLoading(false)
-            })
-        setLoading(false)
-
+        const fetAPI = async () => {
+            const dataResult = await searchService(debounced, 'less')
+            setSearchResult(dataResult)
+            setLoading(false)
+        }
+        fetAPI()
     }, [debounced]);
+
     const handleClear = () => {
-        setSearchValue('')
-        setSearchResult([])
-        inputRef.current.focus()
+        setSearchValue('');
+        setSearchResult([]);
+        inputRef.current.focus();
     }
     return (
         <HeadlessTippy

@@ -6,7 +6,7 @@ import { useState } from 'react';
 import 'tippy.js/dist/tippy.css';
 import images from '../../../../assets/images';
 import Button from '../../../Button';
-import { InboxIcon, MessageIcon, SupBage, UploadIcon } from '../../../icons';
+import { InboxIcon, MessageIcon, UploadIcon } from '../../../icons';
 import Image from '../../../Images';
 import Menu from '../../../Popper/Menu';
 import Search from '../Search';
@@ -69,7 +69,8 @@ const Header = () => {
               <Tippy delay={[0, 100]} content='Inbox' placement='bottom' >
                 <button className={cx('actions-btn')}>
                   <InboxIcon className={cx('supbage')} />
-                  {/* <SupBage className={cx('supbage')} /> */}
+                
+
                 </button>
 
               </Tippy>
