@@ -1,9 +1,11 @@
 import { faArrowRightFromBracket, faCircleQuestion, faCoins, faEarthAmerica, faEllipsisVertical, faGear, faKeyboard, faPlus, faUserAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
 import Tippy from '@tippyjs/react';
 import classNames from 'classnames/bind';
 import { useState } from 'react';
 import 'tippy.js/dist/tippy.css';
+
 import images from '../../../../assets/images';
 import Button from '../../../Button';
 import { InboxIcon, MessageIcon, UploadIcon } from '../../../icons';
@@ -11,6 +13,7 @@ import Image from '../../../Images';
 import Menu from '../../../Popper/Menu';
 import Search from '../Search';
 import styles from './Header.module.scss';
+import routesConfig from '../../../../config/routes';
 
 const cx = classNames.bind(styles);
 
@@ -21,6 +24,7 @@ const MENU_ITEMS = [
       data: [
         { type: 'language', code: 'en', title: 'English' },
         { type: 'language', code: 'vi', title: 'Tiếng Việt' },
+      
       ]
     }
   },
@@ -47,9 +51,9 @@ const Header = () => {
   return (
     <header className={cx('wrapper')}>
       <div className={cx('inner')}>
-        <div className={cx('logo')}>
+        <Link to={routesConfig.home} className={cx('logo')}>
           <img src={images.logo} alt="TikTok" />
-        </div>
+        </Link>
         <div>
           <Search />
         </div>
@@ -84,7 +88,7 @@ const Header = () => {
             </>
           )}
 
-          <Menu items={currentUser ? USER_ITEMS : MENU_ITEMS} onChange={handleMenuChange} >
+          <Menu items={currentUser ? USER_ITEMS : MENU_ITEMS} onChange={handleMenuChange}  >
             {currentUser === true ? (
               <Image
                 src={images.userAvt}

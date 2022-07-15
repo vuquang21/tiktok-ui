@@ -4,6 +4,11 @@
   align-self: flex-start;
   margin: 4px;
 }
+.menu-body { 
+  overflow-y: auto;
+  width: 240px;
+}
+
 .item-btn {
   width: 100%;
   margin: 2px 0 !important;
@@ -21,11 +26,14 @@
 
 .header {
   display: flex;
-  justify-content: flex-start;
+  width: 100%;
+  justify-content: start;
+  align-self: center;
   align-items: center;
-  height: 42px;
+  height: 5rem;
+  flex-shrink: 0;
   margin-top: -8px;
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
 .back-btn {
@@ -33,8 +41,15 @@
   height: 100%;
   background-color: transparent;
   cursor: pointer;
+  left: 0;
+  padding: 0 2rem;
+  
 }
 
 .header-title {
-  margin-right: 15px;
+  align-self: center;
+  flex: 0.8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

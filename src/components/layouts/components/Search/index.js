@@ -21,8 +21,18 @@ const Search = () => {
     const [loading, setLoading] = useState(false);
     const inputRef = useRef();
     const debounced = useDebounce(searchValue, 500);
+
     const handleHiddenResult = () => {
         setShowResult(false);
+    }
+    const handleChange = (e) => {
+        const searchValue = e.target.value
+        if (!searchValue.startsWith(' ')) {
+            setSearchValue(searchValue)
+        }
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault()
     }
     useEffect(() => {
         if (!debounced.trim()) {
@@ -67,7 +77,7 @@ const Search = () => {
                     ref={inputRef}
                     placeholder="Search accounts and videos"
                     spellCheck="false"
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    onChange={handleChange}
                     value={searchValue} />
                 {!!searchValue && !loading && (
                     <button className={cx('clear')} onClick={handleClear} >
@@ -77,7 +87,7 @@ const Search = () => {
 
                 {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
 
-                <button className={cx('search-btn')}  >
+                <button className={cx('search-btn')} onMouseDown={e => e.preventDefault()}  >
                     <SearchIcon />
                 </button>
             </div>
