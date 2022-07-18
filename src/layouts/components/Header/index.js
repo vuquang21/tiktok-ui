@@ -6,14 +6,14 @@ import classNames from 'classnames/bind';
 import { useState } from 'react';
 import 'tippy.js/dist/tippy.css';
 
-import images from '../../../../assets/images';
-import Button from '../../../Button';
-import { InboxIcon, MessageIcon, UploadIcon } from '../../../icons';
-import Image from '../../../Images';
-import Menu from '../../../Popper/Menu';
+import images from '../../../assets/images';
+import Button from '../../../components/Button';
+import { InboxIcon, MessageIcon, UploadIcon } from '../../../components/icons';
+import Image from '../../../components/Images';
+import Menu from '../../../components/Popper/Menu';
 import Search from '../Search';
 import styles from './Header.module.scss';
-import routesConfig from '../../../../config/routes';
+import config from '../../../config';
 
 const cx = classNames.bind(styles);
 
@@ -51,7 +51,7 @@ const Header = () => {
   return (
     <header className={cx('wrapper')}>
       <div className={cx('inner')}>
-        <Link to={routesConfig.home} className={cx('logo')}>
+        <Link to={config.routes.home} className={cx('logo')}>
           <img src={images.logo} alt="TikTok" />
         </Link>
         <div>

@@ -4,11 +4,11 @@ import HeadlessTippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 import { useEffect, useRef, useState } from 'react';
 import 'tippy.js/dist/tippy.css';
-import { useDebounce } from '../../../../hooks';
-import AccountItem from '../../../AccountItem';
-import { SearchIcon } from '../../../icons';
-import { Wrapper as PopperWrapper } from '../../../Popper';
-import { search as searchService } from '../../../../apiService/searchService';
+import { useDebounce } from '../../../hooks';
+import AccountItem from '../../../components/AccountItem';
+import { SearchIcon } from '../../../components/icons';
+import { Wrapper as PopperWrapper } from '../../../components/Popper';
+import { search as searchService } from '../../../services/search';
 import styles from './Search.module.scss';
 
 const cx = classNames.bind(styles);
@@ -31,9 +31,7 @@ const Search = () => {
             setSearchValue(searchValue)
         }
     }
-    const handleSubmit = (e) => {
-        e.preventDefault()
-    }
+   
     useEffect(() => {
         if (!debounced.trim()) {
             setSearchResult([]);
