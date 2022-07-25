@@ -1,0 +1,40 @@
+.menu {
+  border-bottom: 1px solid rgba(22, 24, 35, 0.12);
+}
+.menu-item {
+  display: flex;
+  flex-direction: row;
+  font-size: 1.8rem;
+  align-items: center;
+  padding: 8px;
+  border-radius: 4px;
+  font-family: 'IBM Plex Sans', ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
+  font-weight: 700;
+  line-height: 25px;
+  &:last-child {
+    margin-bottom: 16px;
+  }
+  &:hover {
+    background-color: rgba(22, 24, 35, 0.03);
+  }
+  .active-icon {
+    display: none;
+  }
+  &.active {
+    color: var(--primary);
+    .icon {
+      display: none;
+    }
+    .active-icon {
+      display: inline-flex;
+    }
+  }
+}
+
+.active-icon,
+.icon {
+  display: flex;
+}
+.title {
+  margin-left: 8px;
+}
