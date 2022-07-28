@@ -10,6 +10,7 @@
   --default-layout-header-height: 60px;
   --default-layout-width: 1150px;
   --default-layout-horizontal-space: 20px;
+  --default-height-sign-up: 64px;
 }
 * {
   margin: 0;
@@ -70,13 +71,30 @@ a[href] {
 @font-face {
   font-family: ProximaNova;
   src: url('/assets/fonts/ProximaNova-Semibold.woff2');
-  font-weight: 600;
+  font-weight: 400;
 }
 @font-face {
   font-family: ProximaNova;
   src: url('/assets/fonts/Proxima-Nova-Regular.woff2');
   font-weight: 400;
 }
+@font-face {
+  font-family: ProximaNova;
+  src: url('/assets/fonts/Proxima-Nova-Bold.woff2');
+  font-weight: 700;
+}
+@font-face {
+  font-family: ProximaNova;
+  src: url('/assets/fonts/Proxima-Nova-Semibold.woff2');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: Sofiapro;
+  src: url('/assets/fonts/sofiapro-bold.otf');
+  font-weight: 400;
+}
+
 
 // custom tippy
 body {

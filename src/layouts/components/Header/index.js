@@ -1,19 +1,22 @@
 import { faArrowRightFromBracket, faCircleQuestion, faCoins, faEarthAmerica, faEllipsisVertical, faGear, faKeyboard, faPlus, faUserAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from 'react-router-dom';
 import Tippy from '@tippyjs/react';
 import classNames from 'classnames/bind';
-import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import 'tippy.js/dist/tippy.css';
 
+import { useContext } from 'react';
 import images from '../../../assets/images';
 import Button from '../../../components/Button';
 import { InboxIcon, MessageIcon, UploadIcon } from '../../../components/icons';
 import Image from '../../../components/Images';
 import Menu from '../../../components/Popper/Menu';
+import config from '../../../config';
+import { SigninContext } from '../../../context/signin';
+import { UserContext } from '../../../context/user';
+import { auth, authSignOut } from '../../../firebase/config';
 import Search from '../Search';
 import styles from './Header.module.scss';
-import config from '../../../config';
 
 const cx = classNames.bind(styles);
 
@@ -24,13 +27,14 @@ const MENU_ITEMS = [
       data: [
         { type: 'language', code: 'en', title: 'English' },
         { type: 'language', code: 'vi', title: 'Tiếng Việt' },
-      
+
       ]
     }
   },
   { icon: <FontAwesomeIcon icon={faCircleQuestion} />, title: 'Feedback and help', to: '/feedback' },
   { icon: <FontAwesomeIcon icon={faKeyboard} />, title: 'Keyboard shortcuts' },
 ]
+
 const USER_ITEMS = [
   { icon: <FontAwesomeIcon icon={faUserAlt} />, title: 'View profile', to: '/profile' },
   { icon: <FontAwesomeIcon icon={faCoins} />, title: 'Get coins', to: '/coin' },
@@ -39,13 +43,24 @@ const USER_ITEMS = [
   { icon: <FontAwesomeIcon icon={faArrowRightFromBracket} />, title: 'Log out', to: '/', separate: true, },
 ]
 const Header = () => {
-
-  const [currentUser, setCurrentUser] = useState(true)
-
-
+  const dataUser = useContext(UserContext)
+  
+  const handleSignal = useContext(SigninContext)
   // handle logic 
   const handleMenuChange = () => {
 
+  }
+
+  // sign in
+  const handleSignIn = () => {
+    handleSignal.handleSignalSignin()
+  }
+  // sign out
+  const handleSignOut = (index) => {
+    console.log(dataUser.user);
+    if (index === 6) { 
+      authSignOut()
+    }
   }
 
   return (
@@ -58,7 +73,7 @@ const Header = () => {
           <Search />
         </div>
         <div className={cx('actions')}>
-          {currentUser ? (
+          {dataUser.user ? (
             <>
               <Tippy delay={[0, 100]} content='Upload video' placement='bottom' >
                 <button className={cx('actions-btn')}>
@@ -73,23 +88,22 @@ const Header = () => {
               <Tippy delay={[0, 100]} content='Inbox' placement='bottom' >
                 <button className={cx('actions-btn')}>
                   <InboxIcon className={cx('supbage')} />
-                
-
                 </button>
 
               </Tippy>
             </>
           ) : (
-            <>
+            <div className='flex flex-row gap-4 h-[36px]'>
               <Button text leftIcon={<FontAwesomeIcon icon={faPlus} />}>
                 Upload
               </Button>
-              <Button primary>Log in</Button>
-            </>
+              <Button primary onClick={handleSignIn}>Log in</Button>
+
+            </div>
           )}
 
-          <Menu items={currentUser ? USER_ITEMS : MENU_ITEMS} onChange={handleMenuChange}  >
-            {currentUser === true ? (
+          <Menu items={dataUser.user ? USER_ITEMS : MENU_ITEMS} onChange={handleMenuChange} onClick={(index) => handleSignOut(index)} >
+            {dataUser.user ? (
               <Image
                 src={images.userAvt}
                 className={cx('user-avt')}
@@ -110,6 +124,7 @@ const Header = () => {
         </div>
 
       </div>
+
     </header >
   );
 };

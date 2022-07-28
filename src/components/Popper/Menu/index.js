@@ -13,13 +13,13 @@ const defaultFunction = () => {
 }
 
 
-function Menu({ children, items = [], onChange, hideOnClick = 'false' }) {
+function Menu({ children, items = [], onChange, hideOnClick = 'false', onClick }) {
   const [history, setHistory] = useState([{ data: items }])
   const onBack = () => {
     setHistory(prev => prev.slice(0, prev.length - 1))
   }
   const currentHistory = history[history.length - 1]
-
+  
   const renderItem = () => {
     return currentHistory.data.map((item, index) => {
       const isParent = !!item.children
@@ -30,6 +30,7 @@ function Menu({ children, items = [], onChange, hideOnClick = 'false' }) {
           } else {
             onChange(item)
           }
+          onClick(index)
         }} />
       )
     })

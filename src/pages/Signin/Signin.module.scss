@@ -1,0 +1,22 @@
+.wrapper {
+  transform: translate(-8%, -14%);
+  display: flex;
+  justify-content: center;
+}
+.title {
+  color: rgb(22, 24, 35);
+  font-family: SofiaPro, Arial, Tahoma, PingFangSC, sans-serif;
+  font-size: 32px;
+  font-weight: bold;
+
+}
+
+.btn-signup { 
+  color: var(--primary);
+  &:hover { 
+    text-decoration: underline;
+  }
+}
+.hidden { 
+  display: none;
+}

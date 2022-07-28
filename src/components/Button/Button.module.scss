@@ -2,6 +2,7 @@
   display: inline-flex;
   align-items: center;
   text-align: center;
+  align-items: center;
   justify-content: center;
   font-size: 1.6rem;
   font-family: 'ProximaNova', sans-serif;
@@ -20,12 +21,17 @@
     pointer-events: none;
     opacity: 0.5;
   }
+  &.title { 
+    text-align: center;
+    align-self: center;
+  }
 }
 
 .icon + .title,
 .title + .icon {
   margin: 0px 8px;
 }
+
 .icon {
   display: inline-block;
   width: 20px;
@@ -60,8 +66,10 @@
 }
 .text {
   &:hover {
-    text-decoration: underline;
+    // text-decoration: underline;
+    background-color: rgba(22, 24, 35, 0.03);
   }
+  border: 1px solid rgba(22, 24, 35, 0.12);
 }
 
 // Button sizes
